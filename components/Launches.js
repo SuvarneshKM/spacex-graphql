@@ -1,19 +1,33 @@
+import Image from 'next/image';
+
 export default function Launches({ launch }) {
     return (
-        <a href={launch.links.video_link} class="bg-white rounded-lg m-h-64 p-2 transform hover:translate-y-2 hover:shadow-xl transition duration-300">
-            <div class="rounded-lg p-4 bg-gray-500 flex flex-col">
-                <div>
-                    <h5 class="text-white text-2xl font-bold leading-none">
-                        {launch.mission_name}
-                    </h5>
-                    <span class="text-sm text-black leading-none"><span>Launch Time : </span>{ new Date(launch.launch_date_local).toLocaleDateString("en-In")}</span>
+        <div key={launch.id} class="bg-white rounded-md overflow-hidden relative shadow-md">
+            {launch.links.flickr_images.length
+                ?
+                <div className="p-1">
+                    <img class="w-full" src={launch.links.flickr_images} alt="Recipe Title" />
                 </div>
-                <div class="flex items-center justify-center">
-                    <div class="text-lg text-white font-light">
-                        <span>Rocket Name : </span>{launch.rocket.rocket_name}<span>🚀</span>
+                :
+                <div className="p-1">
+                    <img class="w-full" src="/SpaceX-Logo.svg" alt="Recipe Title" />
+                </div>
+            }
+            <div class="p-4">
+                <h2 class="text-2xl text-green-400">{launch.mission_name}</h2>
+                <div class="flex justify-center mt-4 mb-4 text-gray-500">
+                    <div class="flex items-center">
+                        <span>Launch Date : </span>
+                        <span class="ml-1 lg:text-xl">{new Date(launch.launch_date_local).toLocaleDateString("en-IN")}</span>
                     </div>
                 </div>
+                <a href={launch.links.video_link}>
+                    <button class="text-white bg-green-400 p-4 rounded-md w-full uppercase">Launch Video</button>
+                </a>
             </div>
-        </a>
+            <div class="absolute top-0 right-0 mt-4 mr-4 bg-green-400 text-white rounded-full pt-1 pb-1 pl-4 pr-5 text-xs uppercase">
+                <span>spacex</span>
+            </div>
+        </div>
     )
 }

@@ -16,9 +16,9 @@ export default function Home({ launches }) {
             Launches
           </h1>
         </div>
-        <div class="flex items-center bg-indigo-100 w-screen min-h-screen" style={{ "fontFamily": "Muli sans-serif " }}>
-          <div class="container ml-auto mr-auto flex flex-wrap items-start">
-            <div class="flex flex-wrap space-x-4 space-y-4">
+        <div class="bg-gradient-to-b from-gray-200 to-gray-400 bg-fixed h-full">
+          <div class="flex-wrap container mx-auto p-4">
+            <div class="grid gap-4 gap-y-8 md:grid-cols-2 lg:grid-cols-3 mb-16">
               {launches.map(launch => {
                 return (
                   <Launches launch={launch} />
@@ -45,11 +45,18 @@ export async function getStaticProps() {
           id
           mission_name
           launch_date_local
+          details
           links {
             video_link
+            flickr_images
           }
           rocket {
             rocket_name
+          }
+          ships {
+            name
+            home_port
+            image
           }
         }
       }
