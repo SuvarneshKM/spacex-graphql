@@ -6,11 +6,11 @@ export default function Launches({ launch }) {
             {launch.links.flickr_images.length
                 ?
                 <div className="p-1">
-                    <img class="w-full" src={launch.links.flickr_images} alt="Recipe Title" />
+                    <img class="w-full h-96" src={launch.links.flickr_images} alt="Recipe Title" />
                 </div>
                 :
                 <div className="p-1">
-                    <img class="w-full" src="/SpaceX-Logo.svg" alt="Recipe Title" />
+                    <img class="w-full h-96" src="/SpaceX-Logo.svg" alt="Recipe Title" />
                 </div>
             }
             <div class="p-4">
